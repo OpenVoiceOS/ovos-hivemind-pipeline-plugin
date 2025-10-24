@@ -4,7 +4,7 @@
     "Lad mig spørge {name}"
   ],
   "hivemind_error.dialog": [
-    null,
-    null
+    "Jeg kunne ikke få svar fra {name}",
+    "Beklager, men der gik noget galt med anmodningen fra {name}."
   ]
 }
