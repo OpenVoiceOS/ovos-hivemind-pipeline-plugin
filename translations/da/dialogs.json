@@ -1,0 +1,10 @@
+{
+  "asking.dialog": [
+    "Spørger {name}",
+    "Lad mig spørge {name}"
+  ],
+  "hivemind_error.dialog": [
+    null,
+    null
+  ]
+}
