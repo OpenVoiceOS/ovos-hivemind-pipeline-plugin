@@ -1,0 +1,10 @@
+{
+  "asking.dialog": [
+    "Preguntando a {name}",
+    "Déjame preguntarle a {name}"
+  ],
+  "hivemind_error.dialog": [
+    "No pude obtener una respuesta de {name}",
+    "Lo sentimos, pero algo salió mal con la solicitud de {name}."
+  ]
+}
