@@ -85,13 +85,10 @@ $ hivemind-client test-identity
 
 ## Slave Mode
 
-In **slave** mode, skills can emit serialized [HiveMessages](https://github.com/JarbasHiveMind/hivemind-websocket-client/blob/dev/hivemind_bus_client/message.py) over the regular bus. This lets you inject bus messages from one device messagebus into another.
+In **slave** mode, skills can emit a serialized [HiveMessage](https://github.com/JarbasHiveMind/hivemind-websocket-client/blob/dev/hivemind_bus_client/message.py) over the regular bus to reach the master. This lets a skill on the slave device forward a bus message to the master HiveMind server.
 
 From **slave** to **master** (the message might be rejected by `hivemind-core`):
 - Emit `"hive.send.upstream"` with `message.data`, `{"msg_type": "bus", "payload": message.serialize()}`
-
-From **master** to **slave**:
-- Emit `"hive.send.downstream"` with `message.data`, `{"msg_type": "bus", "payload": message.serialize()}`
 
 See the [HiveMind protocol](https://jarbashivemind.github.io/HiveMind-community-docs/04_protocol) for details on valid payloads.
 
