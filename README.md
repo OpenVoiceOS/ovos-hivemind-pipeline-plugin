@@ -90,8 +90,10 @@ In **slave** mode, skills can emit serialized [HiveMessages](https://github.com/
 From **slave** to **master** (the message might be rejected by `hivemind-core`):
 - Emit `"hive.send.upstream"` with `message.data`, `{"msg_type": "bus", "payload": message.serialize()}`
 
-From **master** to **slave**:
-- Emit `"hive.send.downstream"` with `message.data`, `{"msg_type": "bus", "payload": message.serialize()}`
+From **master** to **slave** (the master's [hivemind-ovos-agent-plugin](https://github.com/JarbasHiveMind/hivemind-ovos-agent-plugin) handles this message):
+- Emit `"hive.send.downstream"` with `message.data`, `{"msg_type": "bus", "payload": message.serialize(), "peer": "<peer id>"}`
+
+The `peer` value is the peer id of one connected slave, in the format `name::session_id` (`HiveMindClientConnection.peer` in hivemind-core). A `bus` message is sent only when `peer` is set. If `peer` is missing, nothing is sent and no error is emitted. If the slave is not connected, the master emits `"hive.client.send.error"`. A `propagate` or `broadcast` message goes to all connected slaves.
 
 See the [HiveMind protocol](https://jarbashivemind.github.io/HiveMind-community-docs/04_protocol) for details on valid payloads.
 
